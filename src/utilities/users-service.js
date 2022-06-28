@@ -13,6 +13,12 @@ export async function signUp(userData) {
   return getUser()
 }
 
+export async function login(credentials) {
+  const token = await usersAPI.login(credentials)
+  localStorage.setItem('token', token)
+  return getUser()
+}
+
 export function getToken() {
 //getItem return null if there's no string
 const token = localStorage.getItem('token')
@@ -36,4 +42,8 @@ export function getUser(){
 
 export function logOut() {
   localStorage.removeItem('token')
+}
+
+export function checkToken(){
+  alert('clicked')
 }
