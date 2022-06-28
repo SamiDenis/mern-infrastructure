@@ -1,7 +1,7 @@
 import "./NavBar.css"
 import { Link } from "react-router-dom"
 
-export default function NavBar() {
+export default function NavBar({ user }) {
 
     return (
        <nav>
@@ -9,6 +9,8 @@ export default function NavBar() {
          {/* makes spaces for the links in between */}
          &nbsp; | &nbsp;
          <Link to="/orders/new">New Order</Link>
+         &nbsp; | &nbsp;
+         Welcome, { user.name }
        </nav>
     );
   }

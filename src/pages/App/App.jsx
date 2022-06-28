@@ -5,21 +5,23 @@ import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import { Routes, Route } from "react-router-dom"
 import NavBar from "../../components/NavBar/NavBar"
+import { getUser } from "../../utilities/users-service"
 
 export default function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(getUser())
   return (
     <main className="App">
       {user ?
         <>
-          <NavBar />
+          <NavBar user={user} />
           <Routes >
+             <Route path="/orders/new" element={<NewOrderPage />}></Route>
             <Route path="/orders" element={<OrderHistoryPage />}></Route>
-            <Route path="/orders/new" element={<NewOrderPage />}></Route>
+           
           </Routes>
         </>
         :
-        <AuthPage />
+        <AuthPage setUser={ setUser } />
       }
     </main>
   );
