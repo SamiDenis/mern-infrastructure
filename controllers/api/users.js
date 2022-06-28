@@ -14,7 +14,7 @@ async function create(req, res) {
         //Yes, we can use res.json to send back just a string
         //The client code needs to take this into consideration
         res.json(token);
-    } catch {
+    } catch (err) {
         //Client will check for non-2xx status code
         //400 = Bad Request
 

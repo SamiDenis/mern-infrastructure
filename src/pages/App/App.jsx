@@ -6,6 +6,7 @@ import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import { Routes, Route } from "react-router-dom"
 import NavBar from "../../components/NavBar/NavBar"
 import { getUser } from "../../utilities/users-service"
+import { setUser } from  "../../utilities/users-service"
 
 export default function App() {
   const [user, setUser] = useState(getUser())
@@ -13,7 +14,7 @@ export default function App() {
     <main className="App">
       {user ?
         <>
-          <NavBar user={user} />
+          <NavBar user={user} setUser={setUser}/>
           <Routes >
              <Route path="/orders/new" element={<NewOrderPage />}></Route>
             <Route path="/orders" element={<OrderHistoryPage />}></Route>
